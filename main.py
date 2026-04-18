@@ -4,7 +4,8 @@ with open("quotes.txt", "r") as f:
     quotes = f.read().split("\n")
 
 now = dt.datetime.now()
-birthdays = pandas.read_csv("birthdays.csv")
+url = os.environ.get("BIRTHDAYS_URL")
+birthdays = pandas.read_csv(url)
 month_name = dt.datetime.strftime(now, '%B')
 day_name = dt.datetime.strftime(now, '%A')
 MY_EMAIL = os.environ.get("MY_EMAIL")
