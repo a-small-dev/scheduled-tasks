@@ -24,7 +24,7 @@ for _, row in birthdays.iterrows():
                                                                                     f"Congrats on turning the big ol {birthday_person_age}!\n"
                                                                                     f"Hope you have a great day and eats lots of cake for me!\n\n"
                                                                                     f"Love,\nBubba")
-    connection.close()
+        connection.close()
 
 if day_name == "Monday":
     daily_quote = random.choice(quotes)
