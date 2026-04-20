@@ -28,12 +28,11 @@ for _, row in birthdays.iterrows():
 
 if day_name == "Monday":
     daily_quote = random.choice(quotes)
-    connection = smtplib.SMTP("smtp.gmail.com", 587)
-    connection.starttls()
-    connection.login(user=MY_EMAIL, password=PASSWORD)
-    for email in EMAIL_LIST:
-        connection.sendmail(from_addr=MY_EMAIL, to_addrs=email, msg= f"Subject: Inspirational Quote For The Week\n\nDamn,"
-                                                                     f" it's already monday again, here is a quote to help"
-                                                                     f" you get through the week:\n{daily_quote}\n\nThis"
-                                                                     f" was automatically sent by my Python script")
-    connection.close()
+    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+        connection.starttls()
+        connection.login(user=MY_EMAIL, password=PASSWORD)
+        for email in EMAIL_LIST:
+            connection.sendmail(from_addr=MY_EMAIL, to_addrs=email, msg= f"Subject: Inspirational Quote For The Week\n\nDamn,"
+                                                                         f" it's already monday again, here is a quote to help"
+                                                                         f" you get through the week:\n{daily_quote}\n\nThis"
+                                                                         f" was automatically sent by my Python script")
